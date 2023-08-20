@@ -1,0 +1,12 @@
+base_route: "C:/dev/active/file_utils"
+action_to_error_message_mapping:
+  delete_file_non_existent: "file does not exist"
+os_file_handling_action_to_encoding_mapping:
+  read: "r"
+  append_to_file: "a"
+  create_and_write: "w"
+  delete_content: "w"
+  create: "x"
+file_type_to_filename_extension_mapping:
+  text: "txt"
+  default: "txt"

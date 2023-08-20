@@ -18,7 +18,7 @@ class OSFileHandler(FileHandler):
         self.action_to_error_message_mapping = action_to_error_message_mapping
 
     def __build_route_for_file(self, path: str, filename: str, filename_extension: str) -> str:
-        return f"{self.base_route}\\{path}\\{filename}.{filename_extension}"
+        return f"{self.base_route}/{path}/{filename}.{filename_extension}"
 
     def __determine_filename_extension(self, file_type: str) -> str:
         if file_type in self.file_type_to_filename_extension_mapping.keys():
@@ -51,7 +51,7 @@ class OSFileHandler(FileHandler):
 
     def add_to_file(self, path: str, filename: str, file_type: str, text: str) -> None:
         file_full_route = self.__get_file_full_route(path=path, filename=filename, file_type=file_type)
-        file = open(file_full_route, self.os_file_handling_action_to_encoding_mapping["add_to_file"])
+        file = open(file_full_route, self.os_file_handling_action_to_encoding_mapping["append_to_file"])
         file.write(text)
         file.close()
 
@@ -64,7 +64,7 @@ class OSFileHandler(FileHandler):
 
     def read_file(self, path: str, filename: str, file_type: str) -> str:
         file_full_route = self.__get_file_full_route(path=path, filename=filename, file_type=file_type)
-        file = open(file_full_route, self.os_file_handling_action_to_encoding_mapping["read_file"])
+        file = open(file_full_route, self.os_file_handling_action_to_encoding_mapping["read"])
         content = file.read()
         file.close()
         return content
